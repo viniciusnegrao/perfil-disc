@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perfil DISC</title>
+<meta name="description" content="Teste de perfil comportamental DISC para autoconhecimento e desenvolvimento de equipes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F0ECE1; --surface:#FFFFFF; --surface-2:#F8F4EA;
+    --ink:#211D16; --ink-soft:#635947; --ink-faint:#8E836D;
+    --line:#E1D8C4; --line-strong:#CDC0A3;
+    --d:#B8452C; --d-bg:#F3E0D8;
+    --i:#8A6206; --i-bg:#F6EBCD;
+    --s:#2C6B4E; --s-bg:#DCEBE1;
+    --c:#345779; --c-bg:#DEE7F0;
+    --radius:16px;
+    --font-display:'Bricolage Grotesque',Georgia,serif;
+    --font-body:'Work Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-mono:'IBM Plex Mono','SF Mono',Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#181410; --surface:#211C15; --surface-2:#27211A;
+      --ink:#F1E9D8; --ink-soft:#B9AD92; --ink-faint:#8B8063;
+      --line:#39331F; --line-strong:#4A422A;
+      --d:#E2794F; --d-bg:#3B2016;
+      --i:#E3B84C; --i-bg:#392E10;
+      --s:#6FBE94; --s-bg:#1D3226;
+      --c:#8CB2DA; --c-bg:#1C2B3C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#181410; --surface:#211C15; --surface-2:#27211A;
+    --ink:#F1E9D8; --ink-soft:#B9AD92; --ink-faint:#8B8063;
+    --line:#39331F; --line-strong:#4A422A;
+    --d:#E2794F; --d-bg:#3B2016;
+    --i:#E3B84C; --i-bg:#392E10;
+    --s:#6FBE94; --s-bg:#1D3226;
+    --c:#8CB2DA; --c-bg:#1C2B3C;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);}
+  img{max-width:100%;}
+  .disc-stripe{display:flex;height:5px;width:100%;}
+  .disc-stripe span{flex:1;}
+  .shell{max-width:680px;margin:0 auto;padding:2.75rem 1.5rem 5rem;}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .6rem;}
+  h1.display{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,6.5vw,44px);line-height:1.1;margin:0 0 .6rem;text-wrap:balance;}
+  h2.display{font-family:var(--font-display);font-weight:700;font-size:23px;margin:0 0 .5rem;text-wrap:balance;}
+  h3.display{font-family:var(--font-display);font-weight:600;font-size:16px;margin:0 0 .8rem;}
+  p.lede{font-size:16px;line-height:1.65;color:var(--ink-soft);margin:0 0 1.6rem;max-width:60ch;}
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2.2rem;}
+  .chip{display:flex;align-items:center;gap:.4rem;padding:.4rem .7rem;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:13px;color:var(--ink-soft);}
+  .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .section-divider{border:none;border-top:1px solid var(--line);margin:0 0 2rem;}
+  .steps{list-style:none;margin:0 0 1.8rem;padding:0;display:flex;flex-direction:column;gap:1.1rem;}
+  .steps li{display:flex;gap:.9rem;align-items:flex-start;}
+  .step-num{font-family:var(--font-display);font-weight:700;font-size:15px;width:2rem;height:2rem;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;flex:none;}
+  .steps strong{display:block;font-size:15px;margin:0 0 .2rem;}
+  .steps p{margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-soft);}
+  .example-block{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.2rem 1rem;margin:0 0 1.8rem;}
+  .example-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .8rem;}
+  .disclaimer{font-size:13px;line-height:1.55;color:var(--ink-faint);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1.1rem;margin:0 0 1.8rem;}
+  .field{margin:0 0 1.6rem;}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--ink-soft);margin:0 0 .4rem;}
+  .field input{width:100%;font:inherit;font-size:16px;padding:.75rem .9rem;border-radius:10px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);}
+  .field input:focus-visible{outline:2px solid var(--c);outline-offset:1px;}
+  .field-hint{font-size:12px;color:var(--ink-faint);margin:.4rem 0 0;}
+  .field-error{font-size:12px;color:var(--d);margin:.4rem 0 0;display:none;}
+  .field.has-error input{border-color:var(--d);}
+  .field.has-error .field-error{display:block;}
+  .btn{font:inherit;font-size:15px;font-weight:600;padding:.8rem 1.3rem;border-radius:10px;cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);}
+  .btn:focus-visible{outline:2px solid var(--c);outline-offset:2px;}
+  .btn-primary{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  .btn-primary:disabled{opacity:.45;cursor:not-allowed;}
+  .btn-ghost{background:transparent;border-color:transparent;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding:.5rem .2rem;}
+  .row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;}
+  .admin-entry{margin:2.5rem 0 0;padding-top:1.2rem;border-top:1px solid var(--line);}
+  .btn-link{font:inherit;font-size:12.5px;color:var(--ink-faint);background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+  .btn-link:hover{color:var(--ink-soft);}
+  .btn-link:focus-visible{outline:2px solid var(--c);outline-offset:2px;}
+  .progress-wrap{margin:0 0 2.2rem;}
+  .progress-meta{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);margin:0 0 .5rem;}
+  .progress-track{height:6px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--d),var(--i),var(--s),var(--c));transition:width .25s ease;}
+  .quiz-title{font-size:14px;line-height:1.55;color:var(--ink-soft);margin:0 0 1.3rem;max-width:52ch;}
+  .word-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;margin:0 0 .7rem;}
+  .word-row.example{margin:0;}
+  .word-main{display:flex;flex-direction:column;gap:.35rem;flex:1;min-width:0;padding-top:.15rem;}
+  .word-line{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
+  .word-text{font-family:var(--font-display);font-size:18px;font-weight:500;}
+  .gloss-btn{width:19px;height:19px;border-radius:50%;border:1px solid var(--line-strong);background:transparent;color:var(--ink-faint);font-family:var(--font-mono);font-size:11px;line-height:1;cursor:pointer;flex:none;display:inline-flex;align-items:center;justify-content:center;padding:0;}
+  .gloss-btn:hover{border-color:var(--ink-soft);color:var(--ink-soft);}
+  .gloss-btn.is-open{background:var(--ink-faint);border-color:var(--ink-faint);color:var(--surface);}
+  .gloss-text{font-size:12.5px;font-style:italic;color:var(--ink-faint);margin:0;line-height:1.4;}
+  .word-actions{display:flex;gap:.4rem;flex:none;padding-top:.1rem;}
+  .btn-pick{font:inherit;font-family:var(--font-mono);font-size:12px;letter-spacing:.03em;text-transform:uppercase;padding:.45rem .7rem;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);cursor:pointer;}
+  .btn-pick:focus-visible{outline:2px solid var(--c);outline-offset:2px;}
+  .btn-most.is-active{background:var(--d);border-color:var(--d);color:#fff;}
+  .btn-least.is-active{background:var(--surface-2);border-color:var(--ink-faint);color:var(--ink);}
+  .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.6rem;}
+  .result-hero{margin:0 0 1.6rem;}
+  .result-letters{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,8vw,54px);margin:0 0 .6rem;line-height:1;}
+  .result-combo{font-size:16px;color:var(--ink-soft);line-height:1.55;max-width:56ch;margin:0 0 1rem;}
+  .chart-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.1rem .7rem;margin:0 0 2rem;}
+  .chart-caption{font-size:12.5px;color:var(--ink-faint);margin:0 0 .8rem;line-height:1.5;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-letter{font-family:var(--font-display);font-weight:700;font-size:19px;}
+  .chart-value{font-family:var(--font-mono);font-size:13px;font-weight:500;}
+  .chart-tick{font-family:var(--font-mono);font-size:10px;}
+  .profile-card{border-radius:var(--radius);padding:1.5rem 1.6rem;margin:0 0 1rem;position:relative;overflow:hidden;}
+  .profile-card--primary{background:var(--tint-color);border:1px solid var(--line);}
+  .profile-card--secondary{background:var(--surface);border:1.5px solid var(--accent-color);}
+  .profile-monogram{position:absolute;top:-22px;right:-6px;font-family:var(--font-display);font-weight:800;font-size:108px;color:var(--accent-color);opacity:.14;line-height:1;pointer-events:none;user-select:none;z-index:0;}
+  .profile-badge-small{position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--accent-color);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;z-index:1;}
+  .profile-tag,.profile-name,.profile-resumo,.profile-grid{position:relative;z-index:1;}
+  .profile-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .3rem;}
+  .profile-name{font-family:var(--font-display);font-weight:700;font-size:21px;margin:0 0 .5rem;color:var(--accent-color);}
+  .profile-resumo{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 1.1rem;max-width:44ch;}
+  .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem;}
+  .profile-grid dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .25rem;}
+  .profile-grid dd{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink);}
+  .minor-heading{margin:0 0 .3rem;}
+  .minor-lede{font-size:13px;color:var(--ink-faint);margin:0 0 1rem;max-width:56ch;}
+  .minor-rows{display:flex;flex-direction:column;gap:.6rem;margin:0 0 2rem;}
+  .minor-row{display:flex;align-items:center;gap:.8rem;padding:.8rem .95rem;border:1px solid var(--line);border-radius:12px;background:var(--surface);}
+  .minor-letter{font-family:var(--font-display);font-weight:700;font-size:19px;width:1.3em;flex:none;}
+  .minor-text{display:flex;flex-direction:column;gap:.1rem;flex:1;min-width:0;}
+  .minor-text strong{font-size:13.5px;}
+  .minor-blurb{font-size:12px;color:var(--ink-faint);}
+  .minor-score{font-family:var(--font-mono);font-size:13px;color:var(--ink-faint);flex:none;}
+  .actions-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem;}
+  .team-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:0 0 1.8rem;}
+  .tile{background:var(--surface-2);border-radius:10px;padding:.85rem .6rem;text-align:center;}
+  .tile-letter{font-family:var(--font-display);font-weight:700;font-size:20px;}
+  .tile-count{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);margin-top:.2rem;}
+  .team-list{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+  .team-row{display:flex;align-items:center;gap:.8rem;padding:.85rem .5rem;margin:0 -.5rem;border-radius:10px;border-bottom:1px solid var(--line);cursor:pointer;}
+  .team-row:hover,.team-row:focus-visible{background:var(--surface-2);outline:none;}
+  .team-info{flex:1;min-width:0;}
+  .team-name{font-weight:600;font-size:14.5px;}
+  .team-date{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-faint);}
+  .badge{font-family:var(--font-mono);font-size:12px;font-weight:600;width:1.9em;height:1.9em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;}
+  .badge--fill{color:#fff;}
+  .badge--outline{background:transparent;border:1.5px solid currentColor;}
+  .badges{display:flex;gap:.35rem;}
+  .empty-state{font-size:14px;color:var(--ink-faint);padding:2rem 0;text-align:center;line-height:1.6;}
+  .loading-state{font-size:14px;color:var(--ink-faint);padding:1.5rem 0;}
+  @media (max-width:480px){
+    .word-row{flex-direction:column;align-items:flex-start;}
+    .word-actions{align-self:stretch;padding-top:.3rem;}
+    .btn-pick{flex:1;}
+    .profile-grid{grid-template-columns:1fr;}
+    .team-tiles{grid-template-columns:repeat(2,1fr);}
+  }
+  @media print{
+    :root{
+      --bg:#ffffff; --surface:#ffffff; --surface-2:#f7f4ea;
+      --ink:#1a1710; --ink-soft:#4a4234; --ink-faint:#726b58;
+      --line:#dcd2ba; --line-strong:#c3b696;
+      --d:#B8452C; --d-bg:#F3E0D8; --i:#8A6206; --i-bg:#F6EBCD;
+      --s:#2C6B4E; --s-bg:#DCEBE1; --c:#345779; --c-bg:#DEE7F0;
+    }
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .no-print, .disc-stripe, .progress-wrap{display:none !important;}
+    .shell{max-width:100%;padding:0 .3rem;}
+    .profile-card,.chart-wrap{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="disc-stripe"><span style="background:#B8452C"></span><span style="background:#8A6206"></span><span style="background:#2C6B4E"></span><span style="background:#345779"></span></div>
+<div class="shell" id="app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var API_URL = (window.DISC_CONFIG && window.DISC_CONFIG.apiUrl) || "";
+
+  var WORDS = {
+    d: ["Decidido","Direto","Competitivo","Ousado","Enérgico","Assertivo","Impaciente","Determinado","Independente","Exigente","Confiante","Autoritário","Pioneiro","Firme","Arrojado","Provocador","Persistente","Dominante","Corajoso","Incisivo","Ambicioso","Franco","Resoluto","Desafiador"],
+    i: ["Comunicativo","Entusiasmado","Persuasivo","Otimista","Expressivo","Espontâneo","Carismático","Falante","Inspirador","Envolvente","Extrovertido","Divertido","Caloroso","Acolhedor","Encantador","Empolgado","Gregário","Sociável","Vibrante","Efusivo","Cativante","Curioso","Receptivo","Alegre"],
+    s: ["Paciente","Leal","Cooperativo","Calmo","Constante","Confiável","Prestativo","Ponderado","Estável","Amigável","Tolerante","Discreto","Compreensivo","Gentil","Consistente","Previsível","Solidário","Sereno","Atencioso","Modesto","Dedicado","Fiel","Acomodado","Harmonioso"],
+    c: ["Analítico","Preciso","Cauteloso","Organizado","Detalhista","Sistemático","Criterioso","Metódico","Reservado","Lógico","Rigoroso","Perfeccionista","Prudente","Disciplinado","Objetivo","Cético","Formal","Meticuloso","Investigativo","Ordenado","Exato","Reflexivo","Conservador","Racional"]
+  };
+
+  var GLOSS = {
+    "Autoritário":"impõe sua vontade com firmeza sobre os outros",
+    "Incisivo":"direto e enfático ao expressar sua opinião",
+    "Resoluto":"decidido, age sem hesitar",
+    "Provocador":"gosta de instigar reações nos outros",
+    "Gregário":"gosta de estar sempre em grupo, cercado de gente",
+    "Efusivo":"demonstra emoção de forma intensa e calorosa",
+    "Cativante":"conquista e encanta com facilidade",
+    "Receptivo":"está aberto a ouvir e aceitar ideias novas",
+    "Ponderado":"pensa com calma antes de agir ou opinar",
+    "Acomodado":"se ajusta com facilidade, sem resistir à situação",
+    "Solidário":"se importa com o outro e se dispõe a ajudar",
+    "Discreto":"evita chamar atenção sobre si",
+    "Criterioso":"analisa com cuidado antes de decidir",
+    "Meticuloso":"presta atenção aos mínimos detalhes",
+    "Cético":"desconfia e questiona antes de aceitar algo",
+    "Racional":"guiado pela lógica, não pela emoção",
+    "Reflexivo":"pensa bastante antes de agir",
+    "Perfeccionista":"busca fazer tudo do jeito mais certo possível",
+    "Investigativo":"gosta de apurar e entender a fundo",
+    "Prestativo":"sempre disposto a ajudar o outro"
+  };
+
+  var PERMS = [["d","i","s","c"],["i","s","c","d"],["s","c","d","i"],["c","d","i","s"],["i","d","c","s"],["s","i","d","c"]];
+
+  var SETS = [];
+  for (var idx=0; idx<24; idx++){
+    var order = PERMS[idx % PERMS.length];
+    SETS.push(order.map(function(letter){ return {letter: letter, word: WORDS[letter][idx]}; }));
+  }
+
+  var DEMO_SET = [{letter:"d",word:"Decidido"},{letter:"i",word:"Comunicativo"},{letter:"s",word:"Paciente"},{letter:"c",word:"Analítico"}];
+
+  var LETTER_NAME = {d:"Dominância", i:"Influência", s:"Estabilidade", c:"Conformidade"};
+
+  var PROFILES = {
+    d: {
+      curta: "Direto, competitivo e rápido para decidir.",
+      resumo: "Orientado a resultados, decide rápido e não teme o confronto direto para alcançar objetivos.",
+      caracteristicas: "Direto, competitivo, independente, assertivo",
+      motiva: "Desafios, autonomia, resultados visíveis",
+      evita: "Perder tempo, microgerenciamento, indecisão alheia",
+      comunicacao: "Seja objetivo, vá direto ao ponto e foque em resultados — evite rodeios."
+    },
+    i: {
+      curta: "Comunicativo, otimista, gosta de gente.",
+      resumo: "Comunicativo e otimista, constrói relações com facilidade e motiva as pessoas ao seu redor.",
+      caracteristicas: "Sociável, entusiasmado, persuasivo, espontâneo",
+      motiva: "Reconhecimento social, interação, ambientes leves",
+      evita: "Isolamento, rotina rígida, falta de reconhecimento",
+      comunicacao: "Dê espaço para a conversa, elogie o entusiasmo e evite excesso de detalhes técnicos."
+    },
+    s: {
+      curta: "Paciente, leal, busca estabilidade.",
+      resumo: "Paciente e leal, valoriza a cooperação e mantém a harmonia em ambientes previsíveis.",
+      caracteristicas: "Calmo, confiável, cooperativo, consistente",
+      motiva: "Segurança, rotina estável, trabalho em equipe",
+      evita: "Mudanças bruscas, conflitos, pressão por velocidade",
+      comunicacao: "Vá com calma, explique o contexto com antecedência e mostre que a mudança é segura."
+    },
+    c: {
+      curta: "Analítico, detalhista, busca precisão.",
+      resumo: "Analítico e criterioso, busca precisão e segue processos para evitar erros.",
+      caracteristicas: "Organizado, detalhista, lógico, cauteloso",
+      motiva: "Qualidade, dados concretos, processos claros",
+      evita: "Decisões precipitadas, ambiguidade, críticas informais",
+      comunicacao: "Apresente dados e evidências, dê tempo para análise e evite pressioná-lo por respostas rápidas."
+    }
+  };
+
+  var COMBOS = {
+    di: "Lidera com entusiasmo — junta ritmo acelerado à capacidade de engajar e convencer pessoas.",
+    ds: "Comando com paciência — decide rápido, mas busca manter o time estável durante a execução.",
+    dc: "Decisão com rigor — quer resultado rápido, mas sustentado por dados e análise cautelosa.",
+    id: "Comunica com garra — usa carisma para abrir portas e não hesita em assumir o controle.",
+    is: "Simpatia com constância — conecta pessoas e mantém vínculos duradouros e de confiança.",
+    ic: "Entusiasmo com atenção ao detalhe — inspira o time sem perder de vista a precisão.",
+    sd: "Estabilidade com iniciativa — sustenta o time, mas sabe tomar a frente quando é preciso.",
+    si: "Constância acolhedora — oferece apoio silencioso e cria um ambiente leve e colaborativo.",
+    sc: "Paciência analítica — trabalha em ritmo constante, com cuidado e atenção aos processos.",
+    cd: "Precisão assertiva — busca a resposta certa e não teme confrontar quando os dados exigem.",
+    ci: "Rigor comunicativo — analisa profundamente, mas sabe traduzir a informação de forma envolvente.",
+    cs: "Método tranquilo — organiza com calma, priorizando consistência e confiabilidade acima da velocidade."
+  };
+
+  var LETTER_ORDER = ["d","i","s","c"];
+
+  function escapeHtml(str){
+    return String(str == null ? "" : str).replace(/[&<>"']/g, function(ch){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];
+    });
+  }
+
+  var state = {
+    screen: "welcome",
+    name: "",
+    current: 0,
+    answers: new Array(24).fill(null).map(function(){ return {most:null, least:null}; }),
+    result: null,
+    viewRecord: null,
+    glossOpen: {},
+    adminKey: "",
+    teamDocsCache: null
+  };
+
+  try { state.adminKey = localStorage.getItem("disc_admin_key") || ""; } catch(e){}
+
+  function computeResult(){
+    var counts = {d:{mais:0,menos:0}, i:{mais:0,menos:0}, s:{mais:0,menos:0}, c:{mais:0,menos:0}};
+    state.answers.forEach(function(a){
+      if (a.most) counts[a.most].mais++;
+      if (a.least) counts[a.least].menos++;
+    });
+    var resultado = {};
+    LETTER_ORDER.forEach(function(k){ resultado[k] = counts[k].mais - counts[k].menos; });
+    var ranked = LETTER_ORDER.slice().sort(function(a,b){ return resultado[b]-resultado[a]; });
+    return { counts: counts, resultado: resultado, primario: ranked[0], secundario: ranked[1] };
+  }
+
+  function buildChart(resultado){
+    var w=620, h=210, left=50, right=585;
+    var centerX = left + (right-left)/2;
+    var maxVal = 24;
+    var scale = ((right-left)/2)/maxVal;
+    var rowY = [36, 86, 136, 186];
+    var barH = 24;
+    var bars = "", labels = "";
+    LETTER_ORDER.forEach(function(k, i){
+      var val = resultado[k];
+      var bw = Math.abs(val)*scale;
+      var x = val>=0 ? centerX : centerX-bw;
+      var y = rowY[i]-barH/2;
+      bars += '<rect x="'+x.toFixed(1)+'" y="'+y+'" width="'+bw.toFixed(1)+'" height="'+barH+'" rx="4" fill="var(--'+k+')" opacity="0.88"></rect>';
+      var valText = (val>0?"+":"") + val;
+      var textX = val>=0 ? x+bw+8 : x-8;
+      var anchor = val>=0 ? "start" : "end";
+      labels += '<text x="'+(left-16)+'" y="'+(rowY[i]+6)+'" text-anchor="end" class="chart-letter" fill="var(--'+k+')">'+k.toUpperCase()+'</text>';
+      labels += '<text x="'+textX.toFixed(1)+'" y="'+(rowY[i]+6)+'" text-anchor="'+anchor+'" class="chart-value" fill="var(--ink)">'+valText+'</text>';
+    });
+    return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Gráfico de pontuação por dimensão DISC">'+
+      '<title>Resultado por dimensão</title>'+
+      '<line x1="'+centerX+'" y1="18" x2="'+centerX+'" y2="198" stroke="var(--line-strong)" stroke-width="1"></line>'+
+      bars + labels +
+      '<text x="'+left+'" y="206" text-anchor="start" class="chart-tick" fill="var(--ink-faint)">-24</text>'+
+      '<text x="'+centerX+'" y="206" text-anchor="middle" class="chart-tick" fill="var(--ink-faint)">0</text>'+
+      '<text x="'+right+'" y="206" text-anchor="end" class="chart-tick" fill="var(--ink-faint)">+24</text>'+
+      '</svg>';
+  }
+
+  function fmtDate(iso){
+    try {
+      var d = new Date(iso);
+      if (isNaN(d.getTime())) return "";
+      return d.toLocaleDateString("pt-BR", {day:"2-digit", month:"2-digit", year:"numeric"});
+    } catch(e){ return ""; }
+  }
+
+  var root = document.getElementById("app");
+
+  function render(){
+    if (state.screen === "welcome") renderWelcome();
+    else if (state.screen === "start") renderStart();
+    else if (state.screen === "quiz") renderQuiz();
+    else if (state.screen === "result") renderResult();
+    else if (state.screen === "admin") renderAdminGate();
+    else if (state.screen === "team") renderTeam();
+  }
+
+  function wordRowHtml(item, opts){
+    opts = opts || {};
+    var gloss = GLOSS[item.word];
+    var isOpen = !!state.glossOpen[item.word];
+    var glossBtn = gloss ? '<button type="button" class="gloss-btn'+(isOpen?' is-open':'')+'" data-gloss-word="'+escapeHtml(item.word)+'" aria-expanded="'+isOpen+'" aria-label="O que significa '+escapeHtml(item.word)+'">?</button>' : "";
+    var glossText = (gloss && isOpen) ? '<p class="gloss-text">'+escapeHtml(gloss)+'</p>' : "";
+    var isMost = opts.most === item.letter;
+    var isLeast = opts.least === item.letter;
+    var actions = opts.demo ?
+      '<div class="word-actions">'+
+        '<button type="button" class="btn-pick btn-most'+(isMost?' is-active':'')+'" disabled>Mais</button>'+
+        '<button type="button" class="btn-pick btn-least'+(isLeast?' is-active':'')+'" disabled>Menos</button>'+
+      '</div>' :
+      '<div class="word-actions">'+
+        '<button type="button" class="btn-pick btn-most'+(isMost?' is-active':'')+'" data-letter="'+item.letter+'" data-role="most">Mais</button>'+
+        '<button type="button" class="btn-pick btn-least'+(isLeast?' is-active':'')+'" data-letter="'+item.letter+'" data-role="least">Menos</button>'+
+      '</div>';
+    return '<div class="word-row'+(opts.demo?' example':'')+'">'+
+      '<div class="word-main"><div class="word-line"><span class="word-text">'+escapeHtml(item.word)+'</span>'+glossBtn+'</div>'+glossText+'</div>'+
+      actions+
+    '</div>';
+  }
+
+  function renderWelcome(){
+    root.innerHTML =
+      '<p class="eyebrow">Autoconhecimento &middot; comportamento no trabalho</p>'+
+      '<h1 class="display">Perfil DISC</h1>'+
+      '<p class="lede">Um teste rápido, baseado no modelo de quatro dimensões comportamentais de William Marston, para entender como você tende a agir, decidir e se comunicar.</p>'+
+      '<div class="legend">'+
+        '<span class="chip"><span class="dot" style="background:var(--d)"></span>D &middot; Dominância</span>'+
+        '<span class="chip"><span class="dot" style="background:var(--i)"></span>I &middot; Influência</span>'+
+        '<span class="chip"><span class="dot" style="background:var(--s)"></span>S &middot; Estabilidade</span>'+
+        '<span class="chip"><span class="dot" style="background:var(--c)"></span>C &middot; Conformidade</span>'+
+      '</div>'+
+      '<hr class="section-divider">'+
+      '<h3 class="display">Como funciona</h3>'+
+      '<ol class="steps">'+
+        '<li><span class="step-num">1</span><div><strong>Você vê 4 palavras por vez</strong><p>Em cada uma das 24 telas, quatro palavras aparecem juntas — uma de cada estilo de comportamento.</p></div></li>'+
+        '<li><span class="step-num">2</span><div><strong>Escolha a que mais e a que menos combina</strong><p>Marque uma palavra como "Mais" (a que mais parece com você) e outra como "Menos" (a que menos parece). As outras duas ficam sem marcar — não tem certo ou errado.</p></div></li>'+
+        '<li><span class="step-num">3</span><div><strong>Veja seu resultado</strong><p>Depois dos 24 blocos (uns 5 minutos), você recebe seu perfil com gráfico, explicação completa e pode baixar em PDF.</p></div></li>'+
+      '</ol>'+
+      '<div class="example-block">'+
+        '<p class="example-label">Exemplo de um bloco</p>'+
+        DEMO_SET.map(function(item){ return wordRowHtml(item, {demo:true, most:"d", least:"s"}); }).join("")+
+      '</div>'+
+      '<p class="disclaimer">Esta ferramenta é inspirada no modelo DISC e serve para autoconhecimento. Ela não passou por validação psicométrica formal (confiabilidade, normas populacionais) como instrumentos comerciais licenciados — trate o resultado como um ponto de partida para reflexão, não como um laudo.</p>'+
+      '<div class="row">'+
+        '<button class="btn btn-primary" id="continue-btn">Continuar</button>'+
+      '</div>'+
+      '<p class="admin-entry"><button class="btn-link" id="admin-link">'+(state.adminKey?'Painel da equipe':'Acesso do administrador')+'</button></p>';
+
+    document.getElementById("continue-btn").addEventListener("click", function(){
+      state.screen = "start";
+      render();
+    });
+    document.getElementById("admin-link").addEventListener("click", function(){
+      state.screen = state.adminKey ? "team" : "admin";
+      render();
+    });
+  }
+
+  function renderStart(){
+    root.innerHTML =
+      '<p class="eyebrow">Antes de começar</p>'+
+      '<h2 class="display">Como você quer aparecer no resultado?</h2>'+
+      '<p class="lede">Seu nome é usado para identificar sua resposta para quem aplicou o teste.</p>'+
+      '<div class="field" id="name-field">'+
+        '<label for="name-input">Seu nome</label>'+
+        '<input type="text" id="name-input" placeholder="Digite seu nome" value="'+escapeHtml(state.name)+'" maxlength="60" autofocus>'+
+        '<p class="field-error">Digite seu nome para começar.</p>'+
+      '</div>'+
+      '<div class="row">'+
+        '<button class="btn btn-ghost" id="back-welcome">&larr; Como funciona</button>'+
+        '<button class="btn btn-primary" id="start-btn">Começar teste</button>'+
+      '</div>';
+
+    function begin(){
+      var input = document.getElementById("name-input");
+      var field = document.getElementById("name-field");
+      var val = input.value.trim();
+      if (!val){
+        field.classList.add("has-error");
+        input.focus();
+        return;
+      }
+      field.classList.remove("has-error");
+      state.name = val;
+      state.current = 0;
+      state.answers = new Array(24).fill(null).map(function(){ return {most:null, least:null}; });
+      state.result = null;
+      state.screen = "quiz";
+      render();
+    }
+
+    document.getElementById("back-welcome").addEventListener("click", function(){
+      state.screen = "welcome";
+      render();
+    });
+    document.getElementById("start-btn").addEventListener("click", begin);
+    document.getElementById("name-input").addEventListener("keydown", function(ev){
+      if (ev.key === "Enter") begin();
+    });
+  }
+
+  function renderQuiz(){
+    var set = SETS[state.current];
+    var answer = state.answers[state.current];
+    var pct = Math.round((state.current/24)*100);
+
+    var rows = set.map(function(item){
+      return wordRowHtml(item, {most: answer.most, least: answer.least});
+    }).join("");
+
+    root.innerHTML =
+      '<div class="progress-wrap">'+
+        '<div class="progress-meta"><span>PERGUNTA '+(state.current+1)+' DE 24</span><span>'+pct+'%</span></div>'+
+        '<div class="progress-track"><div class="progress-fill" style="width:'+pct+'%"></div></div>'+
+      '</div>'+
+      '<h2 class="display">Qual mais e qual menos combina com você?</h2>'+
+      '<p class="quiz-title">Marque uma palavra como "Mais" e outra como "Menos". Toque no <strong>?</strong> ao lado de uma palavra se não souber o significado.</p>'+
+      rows+
+      '<div class="quiz-nav">'+
+        '<button class="btn btn-ghost" id="back-btn"'+(state.current===0?' disabled style="visibility:hidden"':'')+'>&larr; Voltar</button>'+
+        '<button class="btn btn-primary" id="next-btn" disabled>'+(state.current===23?'Ver resultado':'Próxima')+'</button>'+
+      '</div>';
+
+    var a0 = state.answers[state.current];
+    document.getElementById("next-btn").disabled = !(a0.most && a0.least);
+
+    root.querySelectorAll(".gloss-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var word = btn.getAttribute("data-gloss-word");
+        state.glossOpen[word] = !state.glossOpen[word];
+        renderQuiz();
+      });
+    });
+
+    root.querySelectorAll(".btn-pick").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var letter = btn.getAttribute("data-letter");
+        var role = btn.getAttribute("data-role");
+        var a = state.answers[state.current];
+        if (role === "most"){
+          if (a.least === letter) a.least = null;
+          a.most = letter;
+        } else {
+          if (a.most === letter) a.most = null;
+          a.least = letter;
+        }
+        renderQuiz();
+      });
+    });
+
+    document.getElementById("back-btn").addEventListener("click", function(){
+      if (state.current > 0){ state.current--; render(); }
+    });
+    document.getElementById("next-btn").addEventListener("click", function(){
+      if (state.current < 23){
+        state.current++;
+        render();
+      } else {
+        state.result = computeResult();
+        state.viewRecord = {
+          name: state.name,
+          resultado: state.result.resultado,
+          primario: state.result.primario,
+          secundario: state.result.secundario,
+          isOwn: true
+        };
+        state.screen = "result";
+        enviarResultado();
+        render();
+      }
+    });
+  }
+
+  function profileCard(letter, isPrimary){
+    var p = PROFILES[letter];
+    var style = "--accent-color:var(--"+letter+");--tint-color:var(--"+letter+"-bg)";
+    var monogram = isPrimary ? '<span class="profile-monogram">'+letter.toUpperCase()+'</span>' : '<span class="profile-badge-small">'+letter.toUpperCase()+'</span>';
+    return '<div class="profile-card '+(isPrimary?'profile-card--primary':'profile-card--secondary')+'" style="'+style+'">'+
+      monogram+
+      '<p class="profile-tag">'+(isPrimary?'Perfil primário':'Perfil secundário')+' &middot; '+letter.toUpperCase()+'</p>'+
+      '<p class="profile-name">'+LETTER_NAME[letter]+'</p>'+
+      '<p class="profile-resumo">'+p.resumo+'</p>'+
+      '<dl class="profile-grid">'+
+        '<div><dt>Características</dt><dd>'+p.caracteristicas+'</dd></div>'+
+        '<div><dt>Motiva</dt><dd>'+p.motiva+'</dd></div>'+
+        '<div><dt>Evita / estressa</dt><dd>'+p.evita+'</dd></div>'+
+        '<div><dt>Como se comunicar</dt><dd>'+p.comunicacao+'</dd></div>'+
+      '</dl>'+
+    '</div>';
+  }
+
+  function renderResult(){
+    var rec = state.viewRecord;
+    var combo = COMBOS[rec.primario+rec.secundario] || "";
+    var outros = LETTER_ORDER.filter(function(l){ return l!==rec.primario && l!==rec.secundario; });
+
+    var actionsHtml = rec.isOwn ?
+      '<div class="actions-row no-print">'+
+        '<button class="btn btn-primary" id="redo-btn">Refazer teste</button>'+
+        '<button class="btn" id="pdf-btn">Baixar PDF</button>'+
+        '<button class="btn" id="print-btn">Imprimir</button>'+
+        (state.adminKey ? '<button class="btn btn-ghost" id="team-link">Painel da equipe</button>' : '')+
+      '</div>' :
+      '<div class="actions-row no-print">'+
+        '<button class="btn" id="pdf-btn">Baixar PDF deste resultado</button>'+
+        '<button class="btn btn-ghost" id="back-team-btn">&larr; Voltar ao painel</button>'+
+      '</div>';
+
+    root.innerHTML =
+      '<p class="eyebrow">'+(rec.isOwn?'Resultado':'Resultado da equipe')+' &middot; '+escapeHtml(rec.name)+'</p>'+
+      '<div class="result-hero">'+
+        '<p class="result-letters"><span style="color:var(--'+rec.primario+')">'+rec.primario.toUpperCase()+'</span>'+
+        '<span style="color:var(--ink-faint)"> / </span>'+
+        '<span style="color:var(--'+rec.secundario+')">'+rec.secundario.toUpperCase()+'</span></p>'+
+        '<p class="result-combo">'+combo+'</p>'+
+      '</div>'+
+      '<div class="chart-wrap">'+
+        '<p class="chart-caption">Cada barra soma as vezes que a dimensão foi escolhida como "Mais" e subtrai as vezes escolhida como "Menos" — de -24 a +24.</p>'+
+        buildChart(rec.resultado)+
+      '</div>'+
+      profileCard(rec.primario, true)+
+      profileCard(rec.secundario, false)+
+      '<h3 class="display minor-heading">As outras duas dimensões</h3>'+
+      '<p class="minor-lede">Todo mundo tem um pouco de cada uma das quatro — estas foram as que menos se destacaram na resposta.</p>'+
+      '<div class="minor-rows">'+
+        outros.map(function(l){
+          return '<div class="minor-row"><span class="minor-letter" style="color:var(--'+l+')">'+l.toUpperCase()+'</span>'+
+            '<div class="minor-text"><strong>'+LETTER_NAME[l]+'</strong><span class="minor-blurb">'+PROFILES[l].curta+'</span></div>'+
+            '<span class="minor-score">'+(rec.resultado[l]>0?'+':'')+rec.resultado[l]+'</span></div>';
+        }).join("")+
+      '</div>'+
+      actionsHtml+
+      '<p class="field-hint no-print" id="status-line" style="margin-top:.6rem"></p>';
+
+    var redoBtn = document.getElementById("redo-btn");
+    if (redoBtn) redoBtn.addEventListener("click", function(){
+      state.result = null;
+      state.viewRecord = null;
+      state.screen = "start";
+      render();
+    });
+    document.getElementById("pdf-btn").addEventListener("click", baixarPdf);
+    var printBtn = document.getElementById("print-btn");
+    if (printBtn) printBtn.addEventListener("click", function(){ window.print(); });
+    var teamLink = document.getElementById("team-link");
+    if (teamLink) teamLink.addEventListener("click", function(){
+      state.screen = "team";
+      render();
+    });
+    var backTeamBtn = document.getElementById("back-team-btn");
+    if (backTeamBtn) backTeamBtn.addEventListener("click", function(){
+      state.screen = "team";
+      render();
+    });
+  }
+
+  function renderAdminGate(){
+    root.innerHTML =
+      '<p class="eyebrow">Acesso restrito</p>'+
+      '<h2 class="display">Painel do administrador</h2>'+
+      '<p class="lede">Digite a chave de acesso para ver os resultados de todas as pessoas que responderam.</p>'+
+      '<div class="field" id="code-field">'+
+        '<label for="code-input">Chave de acesso</label>'+
+        '<input type="password" id="code-input" placeholder="Digite a chave" maxlength="60" autofocus>'+
+        '<p class="field-error" id="code-error">Chave incorreta.</p>'+
+      '</div>'+
+      '<div class="row">'+
+        '<button class="btn btn-ghost" id="back-welcome">&larr; Voltar</button>'+
+        '<button class="btn btn-primary" id="code-btn">Entrar</button>'+
+      '</div>';
+
+    function tryKey(){
+      var input = document.getElementById("code-input");
+      var field = document.getElementById("code-field");
+      var key = input.value.trim();
+      if (!key){
+        field.classList.add("has-error");
+        input.focus();
+        return;
+      }
+      field.classList.remove("has-error");
+      state.adminKey = key;
+      state.screen = "team";
+      render();
+    }
+
+    document.getElementById("code-btn").addEventListener("click", tryKey);
+    document.getElementById("code-input").addEventListener("keydown", function(ev){
+      if (ev.key === "Enter") tryKey();
+    });
+    document.getElementById("back-welcome").addEventListener("click", function(){
+      state.screen = "welcome";
+      render();
+    });
+  }
+
+  function renderTeam(){
+    if (!state.adminKey){
+      state.screen = "admin";
+      render();
+      return;
+    }
+    root.innerHTML =
+      '<p class="eyebrow">Painel da equipe</p>'+
+      '<h1 class="display">Resultados do time</h1>'+
+      '<p class="lede">Perfis de quem já respondeu o teste. Toque em alguém da lista para ver o resultado completo.</p>'+
+      '<div id="team-body"><p class="loading-state">Carregando respostas&hellip;</p></div>'+
+      '<div class="row" style="margin-top:1.4rem">'+
+        '<button class="btn btn-ghost" id="back-welcome">&larr; Voltar</button>'+
+        '<button class="btn-link" id="lock-btn" style="margin-left:auto">Sair do painel</button>'+
+      '</div>';
+
+    document.getElementById("back-welcome").addEventListener("click", function(){
+      state.screen = state.result ? "result" : "welcome";
+      if (state.result && !state.viewRecord){
+        state.viewRecord = {
+          name: state.name,
+          resultado: state.result.resultado,
+          primario: state.result.primario,
+          secundario: state.result.secundario,
+          isOwn: true
+        };
+      }
+      render();
+    });
+    document.getElementById("lock-btn").addEventListener("click", function(){
+      state.adminKey = "";
+      try { localStorage.removeItem("disc_admin_key"); } catch(e){}
+      state.screen = "welcome";
+      render();
+    });
+
+    carregarRespostas();
+  }
+
+  function renderTeamBody(docs){
+    var body = document.getElementById("team-body");
+    if (!body) return;
+
+    if (!docs.length){
+      body.innerHTML = '<p class="empty-state">Ainda não há respostas registradas.<br>Envie o link do teste para sua equipe começar a responder.</p>';
+      return;
+    }
+
+    var counts = {d:0,i:0,s:0,c:0};
+    docs.forEach(function(doc){ if (doc.primario && counts.hasOwnProperty(doc.primario)) counts[doc.primario]++; });
+
+    var tiles = LETTER_ORDER.map(function(l){
+      return '<div class="tile"><div class="tile-letter" style="color:var(--'+l+')">'+l.toUpperCase()+'</div>'+
+        '<div class="tile-count">'+counts[l]+' de '+docs.length+'</div></div>';
+    }).join("");
+
+    state.teamDocsCache = docs;
+
+    var rows = docs.map(function(doc, idx){
+      var name = escapeHtml(doc.nome || "Sem nome");
+      var date = fmtDate(doc.criadoEm);
+      var pr = doc.primario, se = doc.secundario;
+      return '<div class="team-row" data-idx="'+idx+'" role="button" tabindex="0">'+
+        '<div class="team-info"><div class="team-name">'+name+'</div><div class="team-date">'+date+'</div></div>'+
+        '<div class="badges">'+
+          '<span class="badge badge--fill" style="background:var(--'+pr+')">'+String(pr).toUpperCase()+'</span>'+
+          '<span class="badge badge--outline" style="color:var(--'+se+')">'+String(se).toUpperCase()+'</span>'+
+        '</div>'+
+      '</div>';
+    }).join("");
+
+    body.innerHTML = '<div class="team-tiles">'+tiles+'</div><div class="team-list">'+rows+'</div>';
+
+    function abrir(idx){
+      var doc = state.teamDocsCache[idx];
+      if (!doc || !doc.resultado) return;
+      state.viewRecord = {
+        name: doc.nome || "Sem nome",
+        resultado: doc.resultado,
+        primario: doc.primario,
+        secundario: doc.secundario,
+        isOwn: false
+      };
+      state.screen = "result";
+      render();
+    }
+    body.querySelectorAll(".team-row").forEach(function(rowEl){
+      rowEl.addEventListener("click", function(){ abrir(parseInt(rowEl.getAttribute("data-idx"),10)); });
+      rowEl.addEventListener("keydown", function(ev){
+        if (ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); abrir(parseInt(rowEl.getAttribute("data-idx"),10)); }
+      });
+    });
+  }
+
+  function teamMessage(texto){
+    var body = document.getElementById("team-body");
+    if (body) body.innerHTML = '<p class="empty-state">'+texto+'</p>';
+  }
+
+  function enviarResultado(){
+    if (!API_URL || !state.result) return;
+    var r = state.result;
+    // Content-Type text/plain evita o preflight CORS que o Apps Script nao responde.
+    fetch(API_URL, {
+      method: "POST",
+      headers: {"Content-Type": "text/plain;charset=utf-8"},
+      body: JSON.stringify({
+        nome: state.name,
+        primario: r.primario,
+        secundario: r.secundario,
+        resultado: r.resultado,
+        contagem: r.counts
+      })
+    }).catch(function(){});
+  }
+
+  function carregarRespostas(){
+    if (!API_URL){
+      teamMessage("A planilha de resultados ainda não foi configurada neste site.<br>Preencha a URL do Apps Script no arquivo config.js.");
+      return;
+    }
+    fetch(API_URL + "?key=" + encodeURIComponent(state.adminKey))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (!data || !data.ok){
+          state.adminKey = "";
+          try { localStorage.removeItem("disc_admin_key"); } catch(e){}
+          teamMessage("Chave de acesso incorreta.<br><br>Volte e tente novamente.");
+          return;
+        }
+        try { localStorage.setItem("disc_admin_key", state.adminKey); } catch(e){}
+        renderTeamBody(data.respostas || []);
+      })
+      .catch(function(){
+        teamMessage("Não foi possível carregar os resultados agora.<br>Verifique a conexão e a configuração do Apps Script.");
+      });
+  }
+
+  var PDF_HEX = {
+    d:"#B8452C", i:"#8A6206", s:"#2C6B4E", c:"#345779",
+    dbg:"#F3E0D8", ibg:"#F6EBCD", sbg:"#DCEBE1", cbg:"#DEE7F0",
+    ink:"#1a1710", inkSoft:"#4a4234", inkFaint:"#726b58", line:"#c3b696"
+  };
+
+  function hexToRgb(hex){
+    var h = hex.replace("#","");
+    return [parseInt(h.substring(0,2),16), parseInt(h.substring(2,4),16), parseInt(h.substring(4,6),16)];
+  }
+  function pdfFill(doc, hex){ var c=hexToRgb(hex); doc.setFillColor(c[0],c[1],c[2]); }
+  function pdfText(doc, hex){ var c=hexToRgb(hex); doc.setTextColor(c[0],c[1],c[2]); }
+  function pdfDraw(doc, hex){ var c=hexToRgb(hex); doc.setDrawColor(c[0],c[1],c[2]); }
+
+  function pdfChart(doc, resultado, startY, marginX, contentW){
+    var chartLeft = marginX+12, chartRight = marginX+contentW-2;
+    var centerX = chartLeft + (chartRight-chartLeft)/2;
+    var maxVal = 24, scale = ((chartRight-chartLeft)/2)/maxVal;
+    var rowH = 9, barH = 5;
+    var y = startY, topY = startY;
+    LETTER_ORDER.forEach(function(letter){
+      var val = resultado[letter];
+      var bw = Math.max(Math.abs(val)*scale, 0.01);
+      var x = val>=0 ? centerX : centerX-bw;
+      pdfFill(doc, PDF_HEX[letter]);
+      doc.roundedRect(x, y, bw, barH, 1, 1, "F");
+      doc.setFont("helvetica","bold"); doc.setFontSize(11);
+      pdfText(doc, PDF_HEX[letter]);
+      doc.text(letter.toUpperCase(), chartLeft-6, y+barH-0.8, {align:"right"});
+      doc.setFont("helvetica","normal"); doc.setFontSize(8.5);
+      pdfText(doc, PDF_HEX.ink);
+      var valText = (val>0?"+":"") + val;
+      if (val>=0) doc.text(valText, x+bw+2, y+barH-0.8);
+      else doc.text(valText, x-2, y+barH-0.8, {align:"right"});
+      y += rowH;
+    });
+    pdfDraw(doc, PDF_HEX.line); doc.setLineWidth(0.3);
+    doc.line(centerX, topY-2, centerX, y-rowH+barH+2);
+    doc.setFont("helvetica","normal"); doc.setFontSize(7);
+    pdfText(doc, PDF_HEX.inkFaint);
+    doc.text("-24", chartLeft, y+3);
+    doc.text("0", centerX, y+3, {align:"center"});
+    doc.text("+24", chartRight, y+3, {align:"right"});
+    return y+9;
+  }
+
+  function pdfProfileCard(doc, letter, isPrimary, startY, marginX, contentW){
+    var p = PROFILES[letter];
+    doc.setFont("helvetica","normal"); doc.setFontSize(10);
+    var resumoLines = doc.splitTextToSize(p.resumo, contentW-16);
+    var fields = [
+      ["CARACTERISTICAS", p.caracteristicas],
+      ["MOTIVA", p.motiva],
+      ["EVITA / ESTRESSA", p.evita],
+      ["COMO SE COMUNICAR", p.comunicacao]
+    ];
+    doc.setFontSize(9.5);
+    var fieldLines = fields.map(function(f){ return [f[0], doc.splitTextToSize(f[1], contentW-16)]; });
+
+    var height = 8 + 8 + resumoLines.length*4.6 + 3;
+    fieldLines.forEach(function(fl){ height += 4 + fl[1].length*4.4 + 3; });
+    height += 5;
+
+    if (startY + height > 277){ doc.addPage(); startY = 20; }
+    var y = startY;
+
+    if (isPrimary){ pdfFill(doc, PDF_HEX[letter+"bg"]); doc.roundedRect(marginX, y, contentW, height, 3, 3, "F"); }
+    else { pdfDraw(doc, PDF_HEX[letter]); doc.setLineWidth(0.6); doc.roundedRect(marginX, y, contentW, height, 3, 3, "S"); }
+
+    var innerX = marginX+8, cy = y+8;
+    doc.setFont("helvetica","bold"); doc.setFontSize(8);
+    pdfText(doc, PDF_HEX.inkFaint);
+    doc.text((isPrimary?"PERFIL PRIMARIO":"PERFIL SECUNDARIO")+"  "+letter.toUpperCase(), innerX, cy);
+    cy += 7;
+    doc.setFont("helvetica","bold"); doc.setFontSize(14);
+    pdfText(doc, PDF_HEX[letter]);
+    doc.text(LETTER_NAME[letter], innerX, cy);
+    cy += 6;
+    doc.setFont("helvetica","normal"); doc.setFontSize(10);
+    pdfText(doc, PDF_HEX.inkSoft);
+    resumoLines.forEach(function(line){ doc.text(line, innerX, cy); cy+=4.6; });
+    cy += 3;
+    fieldLines.forEach(function(fl){
+      doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+      pdfText(doc, PDF_HEX.inkFaint);
+      doc.text(fl[0], innerX, cy);
+      cy += 4;
+      doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
+      pdfText(doc, PDF_HEX.ink);
+      fl[1].forEach(function(vline){ doc.text(vline, innerX, cy); cy+=4.4; });
+      cy += 3;
+    });
+
+    return y + height + 6;
+  }
+
+  function baixarPdf(){
+    var status = document.getElementById("status-line");
+    var JsPDFCtor = window.jspdf && window.jspdf.jsPDF;
+    var rec = state.viewRecord;
+    if (!JsPDFCtor || !rec){
+      if (status) status.textContent = "Não foi possível gerar o PDF agora. Recarregue a página e tente de novo.";
+      return;
+    }
+    var doc = new JsPDFCtor({unit:"mm", format:"a4"});
+    var marginX = 18, contentW = 210 - marginX*2;
+    var y = 20;
+    var dateStr = new Date().toLocaleDateString("pt-BR", {day:"2-digit", month:"2-digit", year:"numeric"});
+
+    doc.setFont("helvetica","normal"); doc.setFontSize(9);
+    pdfText(doc, PDF_HEX.inkFaint);
+    doc.text("PERFIL DISC  -  "+rec.name+"  -  "+dateStr, marginX, y);
+    y += 10;
+
+    doc.setFont("helvetica","bold"); doc.setFontSize(30);
+    pdfText(doc, PDF_HEX[rec.primario]);
+    doc.text(rec.primario.toUpperCase(), marginX, y);
+    var w1 = doc.getTextWidth(rec.primario.toUpperCase());
+    pdfText(doc, PDF_HEX.inkFaint);
+    doc.text(" / ", marginX+w1, y);
+    var w2 = doc.getTextWidth(" / ");
+    pdfText(doc, PDF_HEX[rec.secundario]);
+    doc.text(rec.secundario.toUpperCase(), marginX+w1+w2, y);
+    y += 8;
+
+    doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
+    pdfText(doc, PDF_HEX.inkSoft);
+    var comboLines = doc.splitTextToSize(COMBOS[rec.primario+rec.secundario] || "", contentW);
+    comboLines.forEach(function(line){ doc.text(line, marginX, y); y+=5; });
+    y += 5;
+
+    doc.setFont("helvetica","italic"); doc.setFontSize(8.5);
+    pdfText(doc, PDF_HEX.inkFaint);
+    var capLines = doc.splitTextToSize('Cada barra soma as vezes que a dimensao foi escolhida como "Mais" e subtrai as vezes escolhida como "Menos" (de -24 a +24).', contentW);
+    capLines.forEach(function(line){ doc.text(line, marginX, y); y+=4; });
+    y += 3;
+
+    y = pdfChart(doc, rec.resultado, y, marginX, contentW) + 5;
+    y = pdfProfileCard(doc, rec.primario, true, y, marginX, contentW);
+    y = pdfProfileCard(doc, rec.secundario, false, y, marginX, contentW);
+
+    if (y > 265){ doc.addPage(); y = 20; }
+    doc.setFont("helvetica","bold"); doc.setFontSize(11);
+    pdfText(doc, PDF_HEX.ink);
+    doc.text("As outras duas dimensões", marginX, y);
+    y += 6;
+
+    var outros = LETTER_ORDER.filter(function(l){ return l!==rec.primario && l!==rec.secundario; });
+    outros.forEach(function(l){
+      doc.setFont("helvetica","bold"); doc.setFontSize(11);
+      pdfText(doc, PDF_HEX[l]);
+      doc.text(l.toUpperCase(), marginX, y);
+      doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
+      pdfText(doc, PDF_HEX.inkSoft);
+      doc.text(LETTER_NAME[l]+" - "+PROFILES[l].curta, marginX+7, y);
+      pdfText(doc, PDF_HEX.inkFaint);
+      var scoreText = (rec.resultado[l]>0?"+":"")+rec.resultado[l];
+      doc.text(scoreText, marginX+contentW, y, {align:"right"});
+      y += 6.5;
+    });
+
+    y += 3;
+    doc.setFont("helvetica","italic"); doc.setFontSize(7.5);
+    pdfText(doc, PDF_HEX.inkFaint);
+    var discLines = doc.splitTextToSize("Ferramenta inspirada no modelo DISC para autoconhecimento; nao possui validacao psicometrica formal. Use como ponto de partida para reflexao, nao como laudo.", contentW);
+    discLines.forEach(function(line){ doc.text(line, marginX, y); y+=3.6; });
+
+    var accentPattern = new RegExp("[̀-ͯ]", "g");
+    var safeName = String(rec.name || "resultado").toLowerCase().normalize("NFD").replace(accentPattern,"").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+    doc.save("perfil-disc-"+(safeName||"resultado")+".pdf");
+    if (status) status.textContent = "PDF gerado.";
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
