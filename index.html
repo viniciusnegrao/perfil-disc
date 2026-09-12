@@ -105,7 +105,11 @@
   .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.6rem;}
   .result-hero{margin:0 0 1.6rem;}
   .result-letters{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,8vw,54px);margin:0 0 .6rem;line-height:1;}
+  .result-intensidade{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-faint);margin:0 0 .7rem;}
   .result-combo{font-size:16px;color:var(--ink-soft);line-height:1.55;max-width:56ch;margin:0 0 1rem;}
+  .dev-list{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-direction:column;gap:.6rem;}
+  .dev-item{display:flex;gap:.7rem;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.75rem .95rem;font-size:13.5px;line-height:1.5;color:var(--ink);}
+  .dev-check{flex:none;width:1.4em;height:1.4em;border-radius:50%;background:var(--surface-2);border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-soft);margin-top:.05rem;}
   .chart-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.3rem 1.1rem .7rem;margin:0 0 2rem;}
   .chart-caption{font-size:12.5px;color:var(--ink-faint);margin:0 0 .8rem;line-height:1.5;}
   .chart-wrap svg{width:100%;height:auto;display:block;}
@@ -232,7 +236,15 @@
       caracteristicas: "Direto, competitivo, independente, assertivo",
       motiva: "Desafios, autonomia, resultados visíveis",
       evita: "Perder tempo, microgerenciamento, indecisão alheia",
-      comunicacao: "Seja objetivo, vá direto ao ponto e foque em resultados — evite rodeios."
+      comunicacao: "Seja objetivo, vá direto ao ponto e foque em resultados — evite rodeios.",
+      sobPressao: "Sob pressão, fica ainda mais direto e impaciente — pode soar autoritário ou atropelar a opinião dos outros só para andar mais rápido.",
+      pontoCego: "No extremo, a pressa vira atropelo: decide sem ouvir, delega mal por não confiar que o outro faça no seu ritmo, e confunde discordância com fraqueza alheia.",
+      baixo: "Como essa dimensão apareceu baixa na sua resposta, você tende a evitar confronto direto, prefere seguir a decidir sozinho, e pode demorar para se posicionar mesmo tendo uma opinião formada.",
+      desenvolvimento: [
+        "Antes de decidir sozinho, pergunte a opinião de pelo menos uma pessoa — mesmo sabendo que provavelmente vai manter sua decisão.",
+        "Pratique contar até três antes de responder num desacordo: o objetivo não é concordar, é ouvir até o fim.",
+        "Reconheça publicamente uma contribuição de alguém do time pelo menos uma vez por semana."
+      ]
     },
     i: {
       curta: "Comunicativo, otimista, gosta de gente.",
@@ -240,7 +252,15 @@
       caracteristicas: "Sociável, entusiasmado, persuasivo, espontâneo",
       motiva: "Reconhecimento social, interação, ambientes leves",
       evita: "Isolamento, rotina rígida, falta de reconhecimento",
-      comunicacao: "Dê espaço para a conversa, elogie o entusiasmo e evite excesso de detalhes técnicos."
+      comunicacao: "Dê espaço para a conversa, elogie o entusiasmo e evite excesso de detalhes técnicos.",
+      sobPressao: "Sob pressão, tende a falar mais e ouvir menos, buscando aprovação ou tentando 'resolver no papo' — pode evitar encarar o problema de frente com otimismo automático.",
+      pontoCego: "No extremo, a necessidade de agradar vira dificuldade de dar feedback difícil, promessas maiores do que consegue entregar, e perda de foco em detalhes que não geram entusiasmo imediato.",
+      baixo: "Como essa dimensão apareceu baixa na sua resposta, você tende a preferir ambientes mais reservados, se comunica de forma mais formal ou técnica, e não sente necessidade de estar sempre em grupo.",
+      desenvolvimento: [
+        "Antes de prometer um prazo, confirme com quem vai executar se ele é realista.",
+        "Pratique dar um feedback direto — não só elogios — pelo menos uma vez por semana.",
+        "Reserve um horário do dia sem interações sociais para trabalho que exige atenção aos detalhes."
+      ]
     },
     s: {
       curta: "Paciente, leal, busca estabilidade.",
@@ -248,7 +268,15 @@
       caracteristicas: "Calmo, confiável, cooperativo, consistente",
       motiva: "Segurança, rotina estável, trabalho em equipe",
       evita: "Mudanças bruscas, conflitos, pressão por velocidade",
-      comunicacao: "Vá com calma, explique o contexto com antecedência e mostre que a mudança é segura."
+      comunicacao: "Vá com calma, explique o contexto com antecedência e mostre que a mudança é segura.",
+      sobPressao: "Sob pressão, tende a se retrair e evitar se posicionar, absorvendo a tensão em silêncio em vez de expor o desconforto — pode acumular insatisfação até desistir ou explodir.",
+      pontoCego: "No extremo, a busca por harmonia vira dificuldade de dizer não, resistência a qualquer mudança mesmo quando necessária, e adiar decisões difíceis esperando que se resolvam sozinhas.",
+      baixo: "Como essa dimensão apareceu baixa na sua resposta, você tende a se adaptar com facilidade a mudanças, gosta de variedade no dia a dia, e não se incomoda em mudar de direção no meio de um projeto.",
+      desenvolvimento: [
+        "Quando discordar de algo, diga isso no momento — não espere ser perguntado.",
+        "Escolha uma rotina pequena para mudar de propósito só para treinar a flexibilidade.",
+        "Pratique pedir ajuda antes de estar sobrecarregado, não depois."
+      ]
     },
     c: {
       curta: "Analítico, detalhista, busca precisão.",
@@ -256,24 +284,44 @@
       caracteristicas: "Organizado, detalhista, lógico, cauteloso",
       motiva: "Qualidade, dados concretos, processos claros",
       evita: "Decisões precipitadas, ambiguidade, críticas informais",
-      comunicacao: "Apresente dados e evidências, dê tempo para análise e evite pressioná-lo por respostas rápidas."
+      comunicacao: "Apresente dados e evidências, dê tempo para análise e evite pressioná-lo por respostas rápidas.",
+      sobPressao: "Sob pressão, tende a mergulhar ainda mais em análise, adiando a decisão até ter 'dados suficientes' — pode travar o time esperando uma certeza que talvez nunca chegue.",
+      pontoCego: "No extremo, o cuidado vira perfeccionismo paralisante, crítica excessiva ao trabalho dos outros, e dificuldade de agir sem ter todas as respostas.",
+      baixo: "Como essa dimensão apareceu baixa na sua resposta, você tende a decidir mais por instinto do que por dados, se incomoda menos com erros de detalhe, e prefere ação rápida a planejamento extenso.",
+      desenvolvimento: [
+        "Defina um prazo para decidir e respeite-o mesmo sem 100% de certeza.",
+        "Pratique entregar algo '80% pronto' antes do prazo, em vez de 100% pronto atrasado.",
+        "Ao dar feedback, comece pelo que funcionou antes de apontar o que pode melhorar."
+      ]
     }
   };
 
   var COMBOS = {
-    di: "Lidera com entusiasmo — junta ritmo acelerado à capacidade de engajar e convencer pessoas.",
-    ds: "Comando com paciência — decide rápido, mas busca manter o time estável durante a execução.",
-    dc: "Decisão com rigor — quer resultado rápido, mas sustentado por dados e análise cautelosa.",
-    id: "Comunica com garra — usa carisma para abrir portas e não hesita em assumir o controle.",
-    is: "Simpatia com constância — conecta pessoas e mantém vínculos duradouros e de confiança.",
-    ic: "Entusiasmo com atenção ao detalhe — inspira o time sem perder de vista a precisão.",
-    sd: "Estabilidade com iniciativa — sustenta o time, mas sabe tomar a frente quando é preciso.",
-    si: "Constância acolhedora — oferece apoio silencioso e cria um ambiente leve e colaborativo.",
-    sc: "Paciência analítica — trabalha em ritmo constante, com cuidado e atenção aos processos.",
-    cd: "Precisão assertiva — busca a resposta certa e não teme confrontar quando os dados exigem.",
-    ci: "Rigor comunicativo — analisa profundamente, mas sabe traduzir a informação de forma envolvente.",
-    cs: "Método tranquilo — organiza com calma, priorizando consistência e confiabilidade acima da velocidade."
+    di: "Lidera com entusiasmo: junta o ritmo acelerado da Dominância com a capacidade de engajar e convencer da Influência. Costuma puxar o grupo pela energia e pela visão, mas corre o risco de decidir rápido demais embalado pelo próprio entusiasmo, sem checar se todo mundo realmente entendeu ou concordou.",
+    ds: "Comando com paciência: decide rápido como a Dominância pede, mas a Estabilidade freia o ímpeto e busca manter o time seguro durante a execução. Tende a ser um líder firme e confiável ao mesmo tempo, mas pode se frustrar internamente ao segurar a vontade de acelerar mais do que o grupo aguenta.",
+    dc: "Decisão com rigor: quer resultado rápido, mas a Conformidade insiste em sustentar a decisão com dados e análise antes de agir. É uma combinação forte para resolver problemas complexos com agilidade, mas o atrito entre 'quero decidir agora' e 'preciso verificar antes' pode gerar impaciência com o próprio processo de checagem.",
+    id: "Comunica com garra: usa o carisma da Influência para abrir portas e a Dominância para não hesitar em assumir o controle quando é hora de agir. Bom em vender ideias e depois executar sem esperar aprovação de todo mundo, mas pode empurrar demais uma ideia antes de ouvir objeções reais.",
+    is: "Simpatia com constância: conecta pessoas com facilidade e mantém os vínculos com lealdade ao longo do tempo. É o tipo de pessoa em quem o time confia e gosta de ter por perto, mas pode evitar tensões necessárias só para preservar o clima bom.",
+    ic: "Entusiasmo com atenção ao detalhe: inspira o time com a Influência, mas a Conformidade não deixa a empolgação atropelar a precisão. Combinação rara de carisma com cuidado técnico, mas o lado analítico pode se sentir engessado pela vontade de agradar e falar sim demais.",
+    sd: "Estabilidade com iniciativa: sustenta o time com paciência, mas sabe assumir a frente quando alguém precisa decidir. Bom equilíbrio entre segurar a rotina e agir quando é necessário, embora a vontade natural de manter tudo estável possa atrasar a hora de agir.",
+    si: "Constância acolhedora: oferece apoio silencioso e cria um ambiente leve e colaborativo, sem precisar de holofote para isso. É o tipo de pessoa que segura o time nos bastidores, mas pode deixar de comunicar suas próprias necessidades por não querer causar incômodo.",
+    sc: "Paciência analítica: trabalha em ritmo constante, com cuidado redobrado nos processos e pouca pressa para decisões apressadas. Combinação confiável para funções que exigem consistência e precisão, mas o time pode sentir falta de velocidade em momentos que pedem urgência.",
+    cd: "Precisão assertiva: busca a resposta certa com rigor analítico, mas não hesita em confrontar quando os dados dizem que é preciso agir. Difícil de convencer sem evidência e, uma vez convencido, executa com firmeza — o desafio é não travar esperando a certeza perfeita antes de decidir.",
+    ci: "Rigor comunicativo: analisa profundamente antes de falar, mas quando fala, sabe traduzir a informação de forma envolvente em vez de só técnica. Boa combinação para explicar coisas complexas de um jeito que as pessoas entendem, mas o perfeccionismo pode atrasar a hora de compartilhar algo que já está bom o suficiente.",
+    cs: "Método tranquilo: organiza com calma, priorizando consistência e confiabilidade acima da velocidade. Excelente para processos que não podem falhar, mas pode ter dificuldade real de se adaptar quando o contexto muda rápido e exige romper o próprio método."
   };
+
+  function bandaDe(score){
+    if (score >= 12) return "muito acentuada";
+    if (score >= 6) return "acentuada";
+    if (score >= 2) return "moderada";
+    if (score >= -1) return "equilibrada";
+    if (score >= -5) return "moderadamente baixa";
+    if (score >= -11) return "baixa";
+    return "muito baixa";
+  }
+
+  function fmtScore(v){ return (v>0?"+":"")+v; }
 
   var LETTER_ORDER = ["d","i","s","c"];
 
@@ -548,14 +596,28 @@
         '<div><dt>Motiva</dt><dd>'+p.motiva+'</dd></div>'+
         '<div><dt>Evita / estressa</dt><dd>'+p.evita+'</dd></div>'+
         '<div><dt>Como se comunicar</dt><dd>'+p.comunicacao+'</dd></div>'+
+        '<div><dt>Sob pressão</dt><dd>'+p.sobPressao+'</dd></div>'+
+        '<div><dt>Ponto cego</dt><dd>'+p.pontoCego+'</dd></div>'+
       '</dl>'+
     '</div>';
+  }
+
+  function planoDesenvolvimento(rec){
+    var itens = PROFILES[rec.primario].desenvolvimento.slice(0, 2).concat(PROFILES[rec.secundario].desenvolvimento.slice(0, 1));
+    return '<h3 class="display minor-heading">Plano de desenvolvimento</h3>'+
+      '<p class="minor-lede">Três ações concretas para equilibrar os pontos fortes do seu perfil, puxadas das dimensões que mais se destacaram.</p>'+
+      '<ul class="dev-list">'+
+        itens.map(function(txt){ return '<li class="dev-item"><span class="dev-check">&check;</span><span>'+txt+'</span></li>'; }).join("")+
+      '</ul>';
   }
 
   function renderResult(){
     var rec = state.viewRecord;
     var combo = COMBOS[rec.primario+rec.secundario] || "";
     var outros = LETTER_ORDER.filter(function(l){ return l!==rec.primario && l!==rec.secundario; });
+    var topScore = rec.resultado[rec.primario];
+    var indefinido = topScore <= 2;
+    var subtitulo = LETTER_NAME[rec.primario]+" "+bandaDe(topScore)+" ("+fmtScore(topScore)+") e "+LETTER_NAME[rec.secundario].toLowerCase()+" "+bandaDe(rec.resultado[rec.secundario])+" ("+fmtScore(rec.resultado[rec.secundario])+").";
 
     var actionsHtml = rec.isOwn ?
       '<div class="actions-row no-print">'+
@@ -575,21 +637,25 @@
         '<p class="result-letters"><span style="color:var(--'+rec.primario+')">'+rec.primario.toUpperCase()+'</span>'+
         '<span style="color:var(--ink-faint)"> / </span>'+
         '<span style="color:var(--'+rec.secundario+')">'+rec.secundario.toUpperCase()+'</span></p>'+
+        '<p class="result-intensidade">'+subtitulo+'</p>'+
         '<p class="result-combo">'+combo+'</p>'+
       '</div>'+
+      (indefinido ? '<p class="disclaimer">Suas respostas ficaram bem equilibradas entre as quatro dimensões — nenhuma se destacou fortemente (a maior pontuação foi '+fmtScore(topScore)+' de 24). Isso pode significar que você se adapta bem a diferentes contextos, ou que vale a pena refazer o teste prestando mais atenção em qual palavra realmente mais e menos combina com você, evitando marcar por eliminação.</p>' : '')+
       '<div class="chart-wrap">'+
         '<p class="chart-caption">Cada barra soma as vezes que a dimensão foi escolhida como "Mais" e subtrai as vezes escolhida como "Menos" — de -24 a +24.</p>'+
         buildChart(rec.resultado)+
       '</div>'+
       profileCard(rec.primario, true)+
       profileCard(rec.secundario, false)+
+      planoDesenvolvimento(rec)+
       '<h3 class="display minor-heading">As outras duas dimensões</h3>'+
       '<p class="minor-lede">Todo mundo tem um pouco de cada uma das quatro — estas foram as que menos se destacaram na resposta.</p>'+
       '<div class="minor-rows">'+
         outros.map(function(l){
+          var texto = rec.resultado[l] < 0 ? PROFILES[l].baixo : PROFILES[l].curta;
           return '<div class="minor-row"><span class="minor-letter" style="color:var(--'+l+')">'+l.toUpperCase()+'</span>'+
-            '<div class="minor-text"><strong>'+LETTER_NAME[l]+'</strong><span class="minor-blurb">'+PROFILES[l].curta+'</span></div>'+
-            '<span class="minor-score">'+(rec.resultado[l]>0?'+':'')+rec.resultado[l]+'</span></div>';
+            '<div class="minor-text"><strong>'+LETTER_NAME[l]+' &middot; '+bandaDe(rec.resultado[l])+'</strong><span class="minor-blurb">'+texto+'</span></div>'+
+            '<span class="minor-score">'+fmtScore(rec.resultado[l])+'</span></div>';
         }).join("")+
       '</div>'+
       actionsHtml+
@@ -849,7 +915,9 @@
       ["CARACTERISTICAS", p.caracteristicas],
       ["MOTIVA", p.motiva],
       ["EVITA / ESTRESSA", p.evita],
-      ["COMO SE COMUNICAR", p.comunicacao]
+      ["COMO SE COMUNICAR", p.comunicacao],
+      ["SOB PRESSAO", p.sobPressao],
+      ["PONTO CEGO", p.pontoCego]
     ];
     doc.setFontSize(9.5);
     var fieldLines = fields.map(function(f){ return [f[0], doc.splitTextToSize(f[1], contentW-16)]; });
@@ -918,13 +986,27 @@
     var w2 = doc.getTextWidth(" / ");
     pdfText(doc, PDF_HEX[rec.secundario]);
     doc.text(rec.secundario.toUpperCase(), marginX+w1+w2, y);
-    y += 8;
+    y += 6;
+
+    var topScorePdf = rec.resultado[rec.primario];
+    doc.setFont("helvetica","normal"); doc.setFontSize(9);
+    pdfText(doc, PDF_HEX.inkFaint);
+    doc.text(LETTER_NAME[rec.primario]+" "+bandaDe(topScorePdf)+" ("+fmtScore(topScorePdf)+") e "+LETTER_NAME[rec.secundario].toLowerCase()+" "+bandaDe(rec.resultado[rec.secundario])+" ("+fmtScore(rec.resultado[rec.secundario])+").", marginX, y);
+    y += 7;
 
     doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
     pdfText(doc, PDF_HEX.inkSoft);
     var comboLines = doc.splitTextToSize(COMBOS[rec.primario+rec.secundario] || "", contentW);
     comboLines.forEach(function(line){ doc.text(line, marginX, y); y+=5; });
-    y += 5;
+    y += 4;
+
+    if (topScorePdf <= 2){
+      doc.setFont("helvetica","italic"); doc.setFontSize(8.5);
+      pdfText(doc, PDF_HEX.inkFaint);
+      var indefLines = doc.splitTextToSize("Respostas bem equilibradas entre as quatro dimensoes — nenhuma se destacou fortemente (maior pontuacao: "+fmtScore(topScorePdf)+" de 24). Leia o resultado como um ponto de partida, nao como um veredito definitivo.", contentW);
+      indefLines.forEach(function(line){ doc.text(line, marginX, y); y+=4; });
+      y += 3;
+    }
 
     doc.setFont("helvetica","italic"); doc.setFontSize(8.5);
     pdfText(doc, PDF_HEX.inkFaint);
@@ -935,6 +1017,21 @@
     y = pdfChart(doc, rec.resultado, y, marginX, contentW) + 5;
     y = pdfProfileCard(doc, rec.primario, true, y, marginX, contentW);
     y = pdfProfileCard(doc, rec.secundario, false, y, marginX, contentW);
+
+    if (y > 250){ doc.addPage(); y = 20; }
+    doc.setFont("helvetica","bold"); doc.setFontSize(11);
+    pdfText(doc, PDF_HEX.ink);
+    doc.text("Plano de desenvolvimento", marginX, y);
+    y += 6;
+    var itensDev = PROFILES[rec.primario].desenvolvimento.slice(0, 2).concat(PROFILES[rec.secundario].desenvolvimento.slice(0, 1));
+    doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
+    pdfText(doc, PDF_HEX.ink);
+    itensDev.forEach(function(txt){
+      var linhas = doc.splitTextToSize("- "+txt, contentW-4);
+      linhas.forEach(function(l2){ doc.text(l2, marginX, y); y+=4.4; });
+      y += 1.5;
+    });
+    y += 3;
 
     if (y > 265){ doc.addPage(); y = 20; }
     doc.setFont("helvetica","bold"); doc.setFontSize(11);
@@ -947,13 +1044,16 @@
       doc.setFont("helvetica","bold"); doc.setFontSize(11);
       pdfText(doc, PDF_HEX[l]);
       doc.text(l.toUpperCase(), marginX, y);
+      pdfText(doc, PDF_HEX.inkFaint);
+      var scoreText = fmtScore(rec.resultado[l]);
+      doc.text(scoreText, marginX+contentW, y, {align:"right"});
+      y += 5;
       doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
       pdfText(doc, PDF_HEX.inkSoft);
-      doc.text(LETTER_NAME[l]+" - "+PROFILES[l].curta, marginX+7, y);
-      pdfText(doc, PDF_HEX.inkFaint);
-      var scoreText = (rec.resultado[l]>0?"+":"")+rec.resultado[l];
-      doc.text(scoreText, marginX+contentW, y, {align:"right"});
-      y += 6.5;
+      var textoDim = rec.resultado[l] < 0 ? PROFILES[l].baixo : PROFILES[l].curta;
+      var dimLines = doc.splitTextToSize(LETTER_NAME[l]+" ("+bandaDe(rec.resultado[l])+") — "+textoDim, contentW);
+      dimLines.forEach(function(line){ doc.text(line, marginX, y); y+=4.4; });
+      y += 3;
     });
 
     y += 3;
