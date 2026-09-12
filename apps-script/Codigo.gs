@@ -8,6 +8,10 @@
 // Troque por uma chave só sua. É ela que libera a leitura dos resultados no painel.
 var CHAVE_ADMIN = 'troque-esta-chave';
 
+// ID da planilha onde as respostas ficam (o trecho entre /d/ e /edit na URL).
+// Deixe vazio se o script estiver vinculado à própria planilha.
+var PLANILHA_ID = '';
+
 var NOME_ABA = 'Respostas';
 var CABECALHO = ['Data', 'Nome', 'Primário', 'Secundário', 'D', 'I', 'S', 'C'];
 
@@ -54,7 +58,9 @@ function doGet(e) {
 }
 
 function aba() {
-  var planilha = SpreadsheetApp.getActiveSpreadsheet();
+  var planilha = PLANILHA_ID
+    ? SpreadsheetApp.openById(PLANILHA_ID)
+    : SpreadsheetApp.getActiveSpreadsheet();
   var destino = planilha.getSheetByName(NOME_ABA);
   if (!destino) {
     destino = planilha.insertSheet(NOME_ABA);
